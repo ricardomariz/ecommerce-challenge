@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
 import path from 'path';
@@ -11,6 +12,8 @@ import './shared/container';
 import './shared/container/providers/MailProvider';
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 

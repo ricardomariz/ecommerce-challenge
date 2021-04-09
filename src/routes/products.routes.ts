@@ -7,6 +7,7 @@ import { ensureAuthenticated } from '../middleware/ensureAuthenticated';
 import { CreateProductController } from '../modules/products/useCases/createProduct/CreateProductController';
 import { CreateProductImagesController } from '../modules/products/useCases/createProductImages/CreateProductImagesController';
 import { DeleteProductController } from '../modules/products/useCases/deleteProduct/DeleteProductController';
+import { GetProductController } from '../modules/products/useCases/getProduct/GetProductController';
 import { ListProductsController } from '../modules/products/useCases/listProducts/ListProductsController';
 import { UpdateProductController } from '../modules/products/useCases/updateProduct/UpdateProductController';
 
@@ -29,6 +30,7 @@ const listProductsController = new ListProductsController();
 const updateProductController = new UpdateProductController();
 const deleteProductController = new DeleteProductController();
 const createProductImagesController = new CreateProductImagesController();
+const getProductController = new GetProductController();
 
 productsRoutes.use(ensureAuthenticated);
 
@@ -41,6 +43,8 @@ productsRoutes.post(
 );
 
 productsRoutes.get('/', listProductsController.handle);
+
+productsRoutes.get('/:id', getProductController.handle);
 
 productsRoutes.put('/:id', updateProductController.handle);
 

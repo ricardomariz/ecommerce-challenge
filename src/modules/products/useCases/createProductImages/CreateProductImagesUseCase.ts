@@ -16,7 +16,8 @@ class CreateProductImagesUseCase {
   ) {}
 
   async execute({ product_id, images_name }: IRequest): Promise<void> {
-    images_name.map(async (image) => {
+    images_name.map(async (img) => {
+      const image = `http://localhost:3333/tmp/images/products/${img}`;
       await this.productsImagesRepository.create(product_id, image);
     });
   }

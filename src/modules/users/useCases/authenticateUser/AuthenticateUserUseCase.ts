@@ -13,6 +13,8 @@ interface IRequest {
 interface IResponse {
   user: {
     email: string;
+    id: string;
+    isActive: boolean;
   };
   token: string;
 }
@@ -44,6 +46,8 @@ class AuthenticateUserUseCase {
     const tokenReturn: IResponse = {
       user: {
         email: user.email,
+        id: user.id,
+        isActive: user.isActive,
       },
       token,
     };
