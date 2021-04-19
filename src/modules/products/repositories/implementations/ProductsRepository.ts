@@ -19,7 +19,7 @@ class ProductsRepository implements IProductsRepository {
     description,
     price,
     user_id,
-  }: ICreateProductDTO): Promise<void> {
+  }: ICreateProductDTO): Promise<Product> {
     const product = this.repository.create({
       name,
       description,
@@ -28,6 +28,8 @@ class ProductsRepository implements IProductsRepository {
     });
 
     await this.repository.save(product);
+
+    return product;
   }
 
   async list(): Promise<Product[]> {

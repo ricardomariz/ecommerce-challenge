@@ -1,5 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 
+import { Product } from '../../entities/Product';
 import { IProductsRepository } from '../../repositories/IProductsRepository';
 
 interface IRequest {
@@ -21,8 +22,14 @@ class CreateProductUseCase {
     description,
     price,
     user_id,
-  }: IRequest): Promise<void> {
-    this.productRepository.create({ name, description, price, user_id });
+  }: IRequest): Promise<Product> {
+    const product = this.productRepository.create({
+      name,
+      description,
+      price,
+      user_id,
+    });
+    return product;
   }
 }
 

@@ -23,7 +23,7 @@ interface IProductsRepository {
     price,
     image,
     user_id,
-  }: ICreateProductDTO): Promise<void>;
+  }: ICreateProductDTO): Promise<Product>;
   list(): Promise<Product[]>;
   update({ name, description, price, image }: IUpdateProductDTO): Promise<void>;
   delete(id: string): Promise<void>;

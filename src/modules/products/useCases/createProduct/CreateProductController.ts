@@ -9,9 +9,14 @@ class CreateProductController {
 
     const createProductUseCase = container.resolve(CreateProductUseCase);
 
-    await createProductUseCase.execute({ name, description, price, user_id });
+    const product = await createProductUseCase.execute({
+      name,
+      description,
+      price,
+      user_id,
+    });
 
-    return response.status(201).send();
+    return response.status(201).send(product);
   }
 }
 
